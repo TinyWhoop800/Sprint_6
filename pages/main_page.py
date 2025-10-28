@@ -12,6 +12,14 @@ class MainPage(BasePage):
     @allure.step('Открываем страницу "Главная"')
     def open_main_page(self):
         self.open(self.config.main_url)
+        self._assert_cookies()
+
+    @allure.step('Соглашаемся с принятием кук')
+    def _assert_cookies(self):
+        try:
+            self.click(self.locator_base.COOKIE_BUTTON)
+        except:
+            pass
 
     @allure.step('Скролл до блока "Вопросы о важном"')
     def scroll_to_important_questions_section(self):
@@ -58,8 +66,8 @@ class MainPage(BasePage):
 
     @allure.step('Проверить, что открыта главная страница Самоката')
     def is_scooter_main_page(self):
-        return self.driver.current_url == self.config.main_url
+        return self.get_current_url() == self.config.main_url
 
     @allure.step('Проверить, что открыта страница Дзена')
     def is_dzen_page_opened(self):
-        return "dzen.ru" in self.driver.current_url
+        return "dzen.ru" in self.get_current_url()

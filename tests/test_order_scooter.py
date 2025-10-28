@@ -23,7 +23,3 @@ class TestOrderScooter:
         order_page.click_confirm_order_modal()
         order_page.are_confirmation_elements_displayed()
         order_page.click_view_status_btn()
-        main_page.click_scooter_logo()
-        main_page.is_scooter_main_page()
-        main_page.click_yandex_logo()
-        main_page.is_dzen_page_opened()

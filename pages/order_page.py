@@ -15,7 +15,8 @@ class OrderPage(BasePage):
         self.config = Config()
 
 
-    def elements_confirmation_page(self):
+    def _get_confirmation_modal_elements(self):
+        """Внутренний метод для получения списка элементов подтверждения заказа"""
         return [
             self.locators_modal_order.SUCCESS_TITLE,
             self.locators_modal_order.ORDER_NUMBER,
@@ -102,7 +103,7 @@ class OrderPage(BasePage):
 
     @allure.step('Проверить все элементы окна подтверждения заказа')
     def are_confirmation_elements_displayed(self):
-        return self.are_elements_displayed(self.elements_confirmation_page())
+        return self.are_elements_displayed(self._get_confirmation_modal_elements())
 
     @allure.step('Тап по кнопке "Посмотреть статус"')
     def click_view_status_btn(self):
